@@ -22,13 +22,10 @@ app.post('/todos', (req, res) => {
 });
 
 app.get('/todos', (req, res) => {
-    Todo.find().then((docs) => {
-        res.send({
-            docs,
-            resultStatus: 'success'
-        });
-    }, (err) => {
-        res.status(400).send(err);
+    Todo.find().then((todos) => {
+        res.send({ todos });
+    }, (e) => {
+        res.status(400).send(e);
     });
 });
 
